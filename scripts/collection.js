@@ -1,4 +1,5 @@
-var collectionItemTemplate = '<div class="collection-album-container column fourth">'
+var collectionItemTemplate = 
+    '<div class="collection-album-container column fourth">'
   + '  <img src="assets/images/album_covers/01.png"/>'
   + '  <div class="collection-album-info caption">'
   + '    <p>'
@@ -22,11 +23,7 @@ window.onload = function() {
 // assign empty string to element's innerHTML property
   collectionContainer.innerHTML = '';
   
-// += appends content to strings
-// each loops adds the contents of the template to the innerHTML
-// of collectionContainer to generate the albums that display
-// on the collection page
   for (var i = 0; i < 12; i++) {
     collectionContainer.innerHTML += collectionItemTemplate;
   }
-}
+};
