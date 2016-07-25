@@ -28,6 +28,21 @@ var albumPicasso = {
   ]
 };
 
+ var albumBaker = {
+   title: 'Chet Baker Sings',
+   artist: 'Chet Baker',
+   label: 'PJ',
+   year: '1954',
+   albumArtUrl: 'assets/images/album_covers/18.png',
+   songs: [
+     { title: 'Time After Time', duration: '2:46'  },
+     { title: 'The Thrill Is Gone', duration: '2:51' },
+     { title: 'I Fall In Love Too Easily', duration: '3:21'},
+     { title: 'But Not For Me', duration: '3:04' },
+     { title: 'My Funny Valentine', duration: '2:21'}
+  ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
   var template =
     '<tr class="album-view-song-item">'
@@ -40,14 +55,13 @@ var createSongRow = function(songNumber, songName, songLength) {
   return template;
 };
 
-var setCurrentAlbum = function(album) {
-
   var albumTitle = document.getElementsByClassName('album-view-title')[0];
   var albumArtist = document.getElementsByClassName('album-view-artist')[0];
   var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
   var albumImage = document.getElementsByClassName('album-cover-art')[0];
   var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
+var setCurrentAlbum = function(album) {
   albumTitle.firstChild.nodeValue = album.title;
   albumArtist.firstChild.nodeValue = album.artist;
   albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -63,4 +77,15 @@ var setCurrentAlbum = function(album) {
  
 window.onload = function() {
   setCurrentAlbum(albumPicasso);
+  
+  var albums = [albumPicasso, albumMarconi, albumBaker];
+  var index = 0;
+  albumImage.addEventListener("click", function(event) {
+    setCurrentAlbum(albums[index]);
+    index++;
+    
+    if (index == albums.length) {
+      index = 0;
+    }
+  });
 };
